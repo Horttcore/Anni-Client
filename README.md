@@ -1,7 +1,13 @@
 # AnniAdapter
 A PSR-3 logger implementation for my Anni logging platform
 
-### Usage
+## Installation
+
+```bash
+composer require ralfhortt/anni-adapter
+```
+
+## Usage
 
 ```php
 <?php
@@ -14,10 +20,10 @@ A PSR-3 logger implementation for my Anni logging platform
 // Log shorthands
 \Anni\Info('Retailer importer', 'Starting');
 \Anni\Critical('Retailer importer', 'No log file found', ['url' => $importUrl]);
-\Anni\Debug('Retailer importer', 'Retailer importer', $retailer->toJson());
-\Anni\Notice('Retailer importer', 'Missing data in retailer', $retailer->toJson());
-\Anni\Warning('Retailer importer', 'Could not generate latitude/longitude of retailer', $retailer->toJson());
-\Anni\Error('Retailer importer', 'Failed to import retailer', $retailer->toJson());
+\Anni\Debug('Retailer importer', 'Retailer importer');
+\Anni\Notice('Retailer importer', 'Missing data in retailer');
+\Anni\Warning('Retailer importer', 'Could not generate latitude/longitude of retailer');
+\Anni\Error('Retailer importer', 'Failed to import retailer');
 \Anni\Alert('Retailer importer', 'Import failed', ['url' => $importUrl]);
 \Anni\Info('Retailer importer', 'Imported 42 retailers', $retailers);
-\Anni\Emergency::channel('Retailer importer')->message('No retailer after import', ['url' => $importUrl, 'retailers' => $retailers]);
+\Anni\Emergency('Retailer importer', 'No retailer after import');
