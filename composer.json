@@ -1,0 +1,26 @@
+{
+    "name": "ralfhortt/anni-client",
+    "description": "A logger client for my Anni logging platform",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ralf Hortt",
+            "email": "me@horttcore.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Anni\\": "src/"
+        },
+        "files": [
+            "src/Alert.php",
+            "src/Critical.php",
+            "src/Debug.php",
+            "src/Emergency.php",
+            "src/Error.php",
+            "src/Info.php",
+            "src/Notice.php",
+            "src/Warning.php"
+        ]
+    }
+}
