@@ -1,23 +1,20 @@
 # AnniAdapter
-A PSR-3 logger implementation for my Anni logging platform
+A logger client for my Anni logging platform
 
 ## Installation
 
 ```bash
-composer require ralfhortt/anni-adapter
+composer require ralfhortt/anni-client
 ```
 
 ## Usage
 
 ```php
 <?php
-// Add a connection
-\Anni\Connection('https://anni.acme.io/sample-project/production', 'jNsVwMbyXO27uxZw');
+# Open a connection
+\Anni\Connect::to('https://anni.acme.io/sample-project/production/jNsVwMbyXO27uxZw');
 
-// Log
-\Anni\Log::channel('Retailer importer')->notice('Importer hat 42 Händler importiert', $retailers);
-
-// Log shorthands
+# Log to Anni
 \Anni\Info('Retailer importer', 'Starting');
 \Anni\Critical('Retailer importer', 'No log file found', ['url' => $importUrl]);
 \Anni\Debug('Retailer importer', 'Retailer importer');
