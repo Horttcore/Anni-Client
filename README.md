@@ -11,6 +11,8 @@ composer require ralfhortt/anni-client
 
 ```php
 <?php
+use \Anni\Connect;
+
 # Open a connection
 \Anni\Connect::to('https://anni.acme.io/sample-project/production/jNsVwMbyXO27uxZw');
 
