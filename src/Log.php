@@ -17,6 +17,8 @@ class Log
 
     protected $reponse = false;
 
+    protected $throttle = 0;
+
     public function level(string $level): Log
     {
         if (!in_array($level, $this->validLevels)) {
@@ -49,6 +51,13 @@ class Log
         return $this;
     }
 
+    public function throttle(int $throttle): Log
+    {
+        $this->throttle = $throttle;
+
+        return $this;
+    }
+
     public function send()
     {
         $connection = Connect::getInstance();
@@ -70,7 +79,7 @@ class Log
     {
     }
 
-    protected function post(): \stdClass
+    protected function post(): ?\stdClass
     {
         $connection = Connect::getInstance();
 
@@ -103,6 +112,7 @@ class Log
             'channel' => $this->getChannel(),
             'message' => $this->getMessage(),
             'payload' => $this->getPayload(false),
+            'throttle' => $this->getThrottle(),
         ];
     }
 
@@ -128,5 +138,10 @@ class Log
         }
 
         return ($raw) ? $this->payload : json_encode($this->payload);
+    }
+
+    public function getThrottle(): int
+    {
+        return $this->throttle;
     }
 }
